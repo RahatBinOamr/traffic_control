@@ -1,6 +1,20 @@
 from django.db import models
-
 class TrafficData(models.Model):
+    # Define choices for road_name
+    ROAD_NAME_CHOICES = [
+        ('Bahaddarhat', 'Bahaddarhat'),
+        ('GEC Circle', 'GEC Circle'),
+        ('New Market', 'New Market'),
+        ('2 no Gate', '2 no Gate'),
+        ('Oxygen Mor', 'Oxygen Mor'),
+        ('Muradpur Mor', 'Muradpur Mor'),
+        ('Agrabad Commercial Area', 'Agrabad Commercial Area'),
+        ('EPZ', 'EPZ'),
+        ('Chattogram Port', 'Chattogram Port'),
+        ('Lalkhan Bazar', 'Lalkhan Bazar'),
+        ('Wasa Mor', 'Wasa Mor'),
+    ]
+
     # GPS Data
     latitude = models.DecimalField(max_digits=10, decimal_places=7)
     longitude = models.DecimalField(max_digits=10, decimal_places=7)
@@ -19,7 +33,7 @@ class TrafficData(models.Model):
     )
 
     # Road & Location Info
-    road_name = models.CharField(max_length=100)
+    road_name = models.CharField(max_length=100, choices=ROAD_NAME_CHOICES)
     road_type = models.CharField(
         max_length=50,
         choices=[
