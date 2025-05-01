@@ -25,7 +25,9 @@ class TrafficDataAdmin(admin.ModelAdmin):
     )
     list_filter = ('road_type', 'traffic_condition', 'month_collected', 'day_of_week')
     search_fields = ('road_name', 'traffic_condition', 'timestamp')
-    ordering = ('-timestamp',)
+    ordering = ('-timestamp','road_name', 'road_type', 'timestamp',
+        'traffic_speed', 'traffic_condition',
+        'latitude', 'longitude', 'month_collected')
     actions = [export_as_csv]
     def get_changeform_initial_data(self, request):
         traffic_conditions = ['traffic-heavy', 'traffic-moderate', 'traffic-free']
